@@ -1,0 +1,22 @@
+server:
+  port: 8085
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: users
+        uri: http://ec2-44-201-112-55.compute-1.amazonaws.com:8083/users/
+        predicates:
+        - Path=/users/**
+      - id: bookings
+        uri: http://ec2-44-201-112-55.compute-1.amazonaws.com:8080/bookings/
+        predicates:
+        - Path=/bookings/**
+      - id: movies
+        uri: http://ec2-44-201-112-55.compute-1.amazonaws.com:8081/movies/
+        predicates:
+        - Path=/movies/**        
+      - id: showtimes
+        uri: http://ec2-44-201-112-55.compute-1.amazonaws.com:8082/showtimes/
+        predicates:
+        - Path=/showtimes/**   
